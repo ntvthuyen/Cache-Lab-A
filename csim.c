@@ -157,9 +157,9 @@ void open(CacheProperties *properties, Cache *cache, char * trace,  Count *count
 int isFull(CacheProperties properties, Set set){
 	int i = 0;
 	for(i = 0;i < properties.E;i++){
-	        if(!set.line[i].valid) return 1;
+	        if(!set.line[i].valid) return 0;
     	}
-    	return 0;
+    	return 1;
 }
 Index freeOne(CacheProperties properties, Set set){
 	int i = 0;
@@ -194,7 +194,7 @@ void process(Cache *cache,CacheProperties *properties, unsigned long long addres
 			isHit = 1;
 			}
     		}
-    	if(!isHit && isFull(*properties,set)){
+    	if(!isHit && !isFull(*properties,set)){
         	temp = freeOne(*properties,set);
 		max = getMinMax(*properties,set,1);
 		set.line[temp].tag = tag;
