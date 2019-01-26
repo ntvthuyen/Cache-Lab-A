@@ -65,6 +65,7 @@ int main(int argc, char ** argv){
 	//myCache.set[0].line[0].valid = 0;
 	//++counter.misses;
 	open(&prop, &myCache, trace, &counter, v);
+	//I don't know why my code going wrong when I try to de-allocate pointer :'<
 	//deallocate(myCache, prop);
 	printSummary(counter.hits , counter.misses, counter.evictions);
 	return 0;
